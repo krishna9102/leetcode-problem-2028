@@ -1,0 +1,29 @@
+
+
+class Solution {
+    public int[] missingRolls(int[] rolls, int mean, int n) {
+         int msum=0;
+         for(int i=0;i<rolls.length;i++)
+         {
+            msum+=rolls[i];
+         }
+         int nsum=((rolls.length+n)*mean)-msum;
+         int quo=nsum/n;
+         int rem=nsum%n;
+         if((nsum>6*n)||(nsum<n)){
+            int[] missn= new int[0];
+            return missn;
+         }
+         else{
+            int[] missn =new int[n];
+            for(int i=0;i<n;i++)
+            {  missn[i]=quo;
+            }
+            for(int i=0;i<rem;i++)
+            {
+                missn[i]++;
+            }
+            return missn;
+         }
+    }
+}
